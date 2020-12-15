@@ -7,19 +7,25 @@ import {CardStatus, ICardProps, TCardStatusVariant} from './interface'
 const Card = ({amount, status}: ICardProps) => {
 
   const statusVariant : TCardStatusVariant={
-    PAGO:'success-400',
-    EM_ABERTO: 'warning-400',
-    EM_ATRASO: 'error-400',
-    REVERTIDO: 'neutral-400'
+    PAGO:{
+      color: 'success-400'
+    },
+    EM_ABERTO: {
+      color: 'warning-400'
+    },
+    EM_ATRASO: {
+      color: 'error-400'
+    },
+    REVERTIDO: {
+      color: 'neutral-400',
+      strikeThrough: true
+    }
   }
-
-  const isStatusReversed = status === 'REVERTIDO';
 
   return (<Container>
     <Label>{amount}</Label>
     <Description
-      strikeThrough={isStatusReversed}
-      color={statusVariant[status]}>
+      status={statusVariant[status]}>
       {CardStatus[status]}
     </Description>
     </Container>);

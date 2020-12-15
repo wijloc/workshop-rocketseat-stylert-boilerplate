@@ -13,10 +13,14 @@ export enum CardStatus{
 }
 
 export interface ICardStyleProps{
+  status: StyleDescription;
+}
+
+export interface StyleDescription {
   color: keyof typeof colors;
-  strikeThrough: boolean;
+  strikeThrough?: boolean;
 }
 
 export type TCardStatusVariant = {
-  [key in keyof typeof CardStatus]: keyof typeof colors;  
+  [key in keyof typeof CardStatus]: StyleDescription;  
 }
